@@ -1,0 +1,15 @@
+export { Slide01_Cover } from './Slide01_Cover';
+export { Slide02_ParadigmShift } from './Slide02_ParadigmShift';
+export { Slide03_WhyImportant } from './Slide03_WhyImportant';
+export { Slide04_FrameworkMap } from './Slide04_FrameworkMap';
+export { Slide05_DeveloperData } from './Slide05_DeveloperData';
+export { Slide06_ReactNative } from './Slide06_ReactNative';
+export { Slide07_PythonPaths } from './Slide07_PythonPaths';
+export { Slide08_DemoIntro } from './Slide08_DemoIntro';
+export { Slide09_InteractiveDemo } from './Slide09_InteractiveDemo';
+export { Slide10_DemoSummary } from './Slide10_DemoSummary';
+export { Slide11_ProsCons } from './Slide11_ProsCons';
+export { Slide12_HowToChoose } from './Slide12_HowToChoose';
+export { Slide13_GoldenPaths } from './Slide13_GoldenPaths';
+export { Slide14_ActionItems } from './Slide14_ActionItems';
+export { Slide15_Summary } from './Slide15_Summary';

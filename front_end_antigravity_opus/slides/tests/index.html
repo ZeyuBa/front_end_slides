@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vibe Coding Slides - 测试运行器</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Inter", "PingFang SC", sans-serif;
+      background: #1D1D1F;
+      color: #FFFFFF;
+      min-height: 100vh;
+      padding: 40px;
+    }
+    
+    .test-header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    
+    .test-header h1 {
+      font-size: 32px;
+      margin-bottom: 10px;
+    }
+    
+    .test-header p {
+      color: #86868B;
+      font-size: 16px;
+    }
+    
+    .test-controls {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      margin-bottom: 40px;
+    }
+    
+    .btn {
+      padding: 12px 32px;
+      font-size: 16px;
+      font-weight: 600;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    
+    .btn-primary {
+      background: #0071E3;
+      color: white;
+    }
+    
+    .btn-primary:hover {
+      background: #0077ED;
+      transform: translateY(-2px);
+    }
+    
+    .btn-secondary {
+      background: #2D2D2F;
+      color: white;
+    }
+    
+    .btn-secondary:hover {
+      background: #3D3D3F;
+    }
+    
+    .test-output {
+      background: #2D2D2F;
+      border-radius: 16px;
+      padding: 30px;
+      max-width: 900px;
+      margin: 0 auto;
+      font-family: "SF Mono", "JetBrains Mono", monospace;
+      font-size: 14px;
+      line-height: 1.8;
+      white-space: pre-wrap;
+      min-height: 400px;
+    }
+    
+    .test-summary {
+      display: flex;
+      gap: 30px;
+      justify-content: center;
+      margin-top: 30px;
+    }
+    
+    .summary-card {
+      background: #2D2D2F;
+      padding: 20px 40px;
+      border-radius: 12px;
+      text-align: center;
+    }
+    
+    .summary-card .number {
+      font-size: 48px;
+      font-weight: 700;
+    }
+    
+    .summary-card .label {
+      color: #86868B;
+      font-size: 14px;
+      margin-top: 5px;
+    }
+    
+    .passed .number { color: #34C759; }
+    .failed .number { color: #FF3B30; }
+    .total .number { color: #0071E3; }
+    
+    /* 测试用的隐藏 iframe */
+    #test-frame {
+      position: fixed;
+      top: -10000px;
+      left: -10000px;
+      width: 1920px;
+      height: 1080px;
+      border: none;
+    }
+    
+    .status-badge {
+      display: inline-block;
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-size: 14px;
+      font-weight: 600;
+      margin-left: 10px;
+    }
+    
+    .status-pending {
+      background: #86868B;
+    }
+    
+    .status-running {
+      background: #FF9500;
+    }
+    
+    .status-passed {
+      background: #34C759;
+    }
+    
+    .status-failed {
+      background: #FF3B30;
+    }
+  </style>
+</head>
+<body>
+  <div class="test-header">
+    <h1>🧪 Vibe Coding Slides 测试运行器</h1>
+    <p>TDD 开发范式 - 先测试后实现</p>
+    <span class="status-badge status-pending" id="status-badge">待运行</span>
+  </div>
+  
+  <div class="test-controls">
+    <button class="btn btn-primary" onclick="runAllTests()">▶️ 运行全部测试</button>
+    <button class="btn btn-secondary" onclick="clearOutput()">🗑️ 清空输出</button>
+    <a href="../index.html" class="btn btn-secondary">📺 查看 Slides</a>
+  </div>
+  
+  <div class="test-output" id="test-output">等待运行测试...</div>
+  
+  <div class="test-summary" id="test-summary" style="display: none;">
+    <div class="summary-card passed">
+      <div class="number" id="passed-count">0</div>
+      <div class="label">通过</div>
+    </div>
+    <div class="summary-card failed">
+      <div class="number" id="failed-count">0</div>
+      <div class="label">失败</div>
+    </div>
+    <div class="summary-card total">
+      <div class="number" id="total-count">0</div>
+      <div class="label">总计</div>
+    </div>
+  </div>
+  
+  <!-- 隐藏的 iframe 用于加载主页面进行测试 -->
+  <iframe id="test-frame" src="../index.html"></iframe>
+  
+  <script src="slides.test.js"></script>
+  <script>
+    const output = document.getElementById('test-output');
+    const statusBadge = document.getElementById('status-badge');
+    let testFrame = null;
+    
+    // 重定向 console.log 到输出区域
+    const originalLog = console.log;
+    console.log = function(...args) {
+      originalLog.apply(console, args);
+      output.textContent += args.join(' ') + '\n';
+      output.scrollTop = output.scrollHeight;
+    };
+    
+    function clearOutput() {
+      output.textContent = '';
+      document.getElementById('test-summary').style.display = 'none';
+      statusBadge.textContent = '待运行';
+      statusBadge.className = 'status-badge status-pending';
+    }
+    
+    async function runAllTests() {
+      clearOutput();
+      statusBadge.textContent = '运行中...';
+      statusBadge.className = 'status-badge status-running';
+      
+      // 等待 iframe 加载完成
+      testFrame = document.getElementById('test-frame');
+      
+      try {
+        // 等待主页面加载
+        await new Promise((resolve) => {
+          if (testFrame.contentWindow.SlidesApp) {
+            resolve();
+          } else {
+            testFrame.onload = resolve;
+          }
+        });
+        
+        // 将全局对象指向 iframe 中的内容
+        window.SlidesApp = testFrame.contentWindow.SlidesApp;
+        
+        // 重新设置 document 查询以指向 iframe
+        const originalQuerySelector = document.querySelector.bind(document);
+        const originalQuerySelectorAll = document.querySelectorAll.bind(document);
+        
+        document.querySelector = (selector) => {
+          return testFrame.contentDocument.querySelector(selector);
+        };
+        
+        document.querySelectorAll = (selector) => {
+          return testFrame.contentDocument.querySelectorAll(selector);
+        };
+        
+        // 运行测试
+        const success = await TestRunner.run();
+        
+        // 恢复原始 document 方法
+        document.querySelector = originalQuerySelector;
+        document.querySelectorAll = originalQuerySelectorAll;
+        
+        // 更新统计
+        document.getElementById('passed-count').textContent = TestRunner.passed;
+        document.getElementById('failed-count').textContent = TestRunner.failed;
+        document.getElementById('total-count').textContent = TestRunner.passed + TestRunner.failed;
+        document.getElementById('test-summary').style.display = 'flex';
+        
+        if (success) {
+          statusBadge.textContent = '全部通过 ✓';
+          statusBadge.className = 'status-badge status-passed';
+        } else {
+          statusBadge.textContent = '存在失败 ✗';
+          statusBadge.className = 'status-badge status-failed';
+        }
+        
+      } catch (error) {
+        console.log(`\n❌ 测试运行错误: ${error.message}`);
+        console.log('请确保 index.html 已正确实现所有功能');
+        statusBadge.textContent = '运行错误';
+        statusBadge.className = 'status-badge status-failed';
+      }
+    }
+    
+    // 页面加载后自动检查 iframe 状态
+    document.getElementById('test-frame').onload = () => {
+      console.log('📄 主页面已加载，准备运行测试\n');
+    };
+  </script>
+</body>
+</html>

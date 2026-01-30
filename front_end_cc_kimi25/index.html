@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vibe Coding 下的 Web 框架选型指南</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Progress Bar -->
+    <div class="progress-container">
+        <div class="progress-bar" id="progressBar"></div>
+    </div>
+
+    <!-- Page Indicator -->
+    <div class="page-indicator">
+        <span id="currentSlide">1</span> / <span id="totalSlides">15</span>
+    </div>
+
+    <!-- Slides Container -->
+    <div class="slides-container">
+
+        <!-- Slide 1: Cover -->
+        <div class="slide active" data-slide="1">
+            <div class="slide-content cover">
+                <h1 class="main-title">Vibe Coding 下的<br>Web 框架选型指南</h1>
+                <p class="subtitle">当 AI 成为你的 Pair Programmer</p>
+                <p class="year-tag">2026 · 前端开发新范式</p>
+            </div>
+        </div>
+
+        <!-- Slide 2: Paradigm Shift -->
+        <div class="slide" data-slide="2">
+            <div class="slide-content">
+                <h2 class="section-title">从"写代码"到"描述意图"</h2>
+                <div class="comparison-layout">
+                    <div class="compare-card past">
+                        <div class="compare-icon">⌨️</div>
+                        <h3>过去</h3>
+                        <p>开发者逐行手写代码</p>
+                    </div>
+                    <div class="compare-arrow">→</div>
+                    <div class="compare-card present">
+                        <div class="compare-icon">💬</div>
+                        <h3>现在</h3>
+                        <p>开发者描述意图，AI 生成代码</p>
+                    </div>
+                </div>
+                <p class="highlight-quote">"2026 年，这叫 Vibe Coding"</p>
+            </div>
+        </div>
+
+        <!-- Slide 3: Why Framework Selection Matters -->
+        <div class="slide" data-slide="3">
+            <div class="slide-content">
+                <h2 class="section-title">意图传递效率决定成败</h2>
+                <div class="three-cards">
+                    <div class="info-card">
+                        <div class="card-icon">📂</div>
+                        <h3>信息局部性</h3>
+                        <p>"AI 能否一次性掌握全局？"</p>
+                    </div>
+                    <div class="info-card">
+                        <div class="card-icon">🧠</div>
+                        <h3>LLM 训练频次</h3>
+                        <p>"AI 见过多少这个框架的代码？"</p>
+                    </div>
+                    <div class="info-card">
+                        <div class="card-icon">📋</div>
+                        <h3>协议驱动</h3>
+                        <p>"框架是否有清晰的类型契约？"</p>
+                    </div>
+                </div>
+                <p class="warning-text">框架选错，AI 也救不了你</p>
+            </div>
+        </div>
+
+        <!-- Slide 4: Framework Landscape (Dark) -->
+        <div class="slide dark" data-slide="4">
+            <div class="slide-content">
+                <h2 class="section-title light">框架全景</h2>
+                <div class="framework-tree">
+                    <div class="tree-branch">
+                        <div class="branch-label">Python 单文件</div>
+                        <div class="branch-items">
+                            <span class="framework-tag">Gradio</span>
+                            <span class="separator">·</span>
+                            <span class="framework-tag">Streamlit</span>
+                            <span class="separator">·</span>
+                            <span class="framework-tag">NiceGUI</span>
+                        </div>
+                    </div>
+                    <div class="tree-branch">
+                        <div class="branch-label">Python 全栈</div>
+                        <div class="branch-items">
+                            <span class="framework-tag">Reflex</span>
+                            <span class="separator">·</span>
+                            <span class="framework-tag">Django</span>
+                        </div>
+                    </div>
+                    <div class="tree-branch">
+                        <div class="branch-label">JavaScript</div>
+                        <div class="branch-items">
+                            <span class="framework-tag">React</span>
+                            <span class="separator">+</span>
+                            <span class="framework-tag">Next.js</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 5: Developer Usage Data -->
+        <div class="slide" data-slide="5">
+            <div class="slide-content">
+                <h2 class="section-title">数据不说谎</h2>
+                <div class="data-table-container">
+                    <table class="framework-data">
+                        <thead>
+                            <tr>
+                                <th>框架</th>
+                                <th>GitHub Stars</th>
+                                <th>开发者使用率</th>
+                                <th>Vibe 契合度</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>React (+Next.js)</strong></td>
+                                <td>230k+</td>
+                                <td>45%</td>
+                                <td class="stars">⭐⭐⭐⭐⭐</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Streamlit</strong></td>
+                                <td>42k+</td>
+                                <td>24% (AI 项目)</td>
+                                <td class="stars">⭐⭐⭐⭐⭐</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Gradio</strong></td>
+                                <td>35k+</td>
+                                <td>70% (研究界)</td>
+                                <td class="stars">⭐⭐⭐⭐⭐</td>
+                            </tr>
+                            <tr>
+                                <td><strong>FastAPI</strong></td>
+                                <td>88k+</td>
+                                <td>16%</td>
+                                <td class="stars">⭐⭐⭐⭐</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Django</strong></td>
+                                <td>85k+</td>
+                                <td>30% (Python)</td>
+                                <td class="stars">⭐⭐</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Reflex</strong></td>
+                                <td>25k+</td>
+                                <td>快速上升</td>
+                                <td class="stars">⭐⭐⭐</td>
+                            </tr>
+                            <tr>
+                                <td><strong>NiceGUI</strong></td>
+                                <td>20k+</td>
+                                <td>利基市场</td>
+                                <td class="stars">⭐⭐⭐⭐</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 6: React is AI's Native Language -->
+        <div class="slide" data-slide="6">
+            <div class="slide-content">
+                <h2 class="section-title">训练频次决定能力</h2>
+                <div class="react-analysis">
+                    <div class="quote-section">
+                        <div class="quote-bubble">
+                            <p>"给我加个苹果风格的磨砂玻璃效果"</p>
+                        </div>
+                    </div>
+                    <div class="code-comparison">
+                        <div class="code-card react">
+                            <div class="card-header">
+                                <span class="badge success">React</span>
+                            </div>
+                            <code>backdrop-blur-md bg-white/30</code>
+                            <p class="result">✅ 一次到位</p>
+                        </div>
+                        <div class="code-card django">
+                            <div class="card-header">
+                                <span class="badge error">Django</span>
+                            </div>
+                            <code>CSS 引用折腾半天</code>
+                            <p class="result">❌ 多文件配置</p>
+                        </div>
+                    </div>
+                </div>
+                <p class="insight">React + Tailwind 在训练语料中密度最高</p>
+            </div>
+        </div>
+
+        <!-- Slide 7: Python Framework Two Paths -->
+        <div class="slide" data-slide="7">
+            <div class="slide-content">
+                <h2 class="section-title">单文件 vs 全栈</h2>
+                <div class="path-comparison">
+                    <div class="path-card single-file">
+                        <div class="path-header">
+                            <div class="path-icon">📄</div>
+                            <h3>单文件主义</h3>
+                        </div>
+                        <div class="path-content">
+                            <div class="framework-tags">
+                                <span class="tag">Streamlit</span>
+                                <span class="tag">Gradio</span>
+                            </div>
+                            <ul class="feature-list">
+                                <li>100 行完成一切</li>
+                                <li>适合：原型 / Demo</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="path-divider">VS</div>
+                    <div class="path-card full-stack">
+                        <div class="path-header">
+                            <div class="path-icon">📁</div>
+                            <h3>全栈 Python</h3>
+                        </div>
+                        <div class="path-content">
+                            <div class="framework-tags">
+                                <span class="tag">Reflex</span>
+                                <span class="tag">Django</span>
+                            </div>
+                            <ul class="feature-list">
+                                <li>多文件模块化</li>
+                                <li>适合：产品 / 生产</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 8: Demo Task Intro -->
+        <div class="slide" data-slide="8">
+            <div class="slide-content">
+                <h2 class="section-title">同一个任务，不同的体验</h2>
+                <div class="task-card">
+                    <div class="task-header">
+                        <span class="task-badge">实战任务</span>
+                        <h3>AI 算力成本模拟器</h3>
+                    </div>
+                    <div class="task-features">
+                        <div class="feature-item">
+                            <span class="feature-icon">🎚️</span>
+                            <span>滑动条输入（GPU 数量、时长）</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon">📊</span>
+                            <span>实时计算成本和风险</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon">📈</span>
+                            <span>24 小时预测折线图</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon">📋</span>
+                            <span>历史记录表格</span>
+                        </div>
+                    </div>
+                </div>
+                <p class="next-hint">接下来，看看各框架如何实现 →</p>
+            </div>
+        </div>
+
+        <!-- Slide 9: Interactive Demo Comparison (CORE) -->
+        <div class="slide demo-slide" data-slide="9">
+            <div class="slide-content full-height">
+                <div class="demo-container">
+                    <!-- Tab Bar -->
+                    <div class="demo-tabs">
+                        <button class="demo-tab active" data-framework="gradio">Gradio</button>
+                        <button class="demo-tab" data-framework="streamlit">Streamlit</button>
+                        <button class="demo-tab" data-framework="react">React</button>
+                        <button class="demo-tab" data-framework="nicegui">NiceGUI</button>
+                    </div>
+
+                    <!-- Demo Content Area -->
+                    <div class="demo-content">
+                        <!-- Gradio Demo -->
+                        <div class="framework-demo active" id="gradio-demo">
+                            <div class="gradio-ui">
+                                <div class="gradio-header">
+                                    <span class="gradio-logo">🤗 Gradio</span>
+                                </div>
+                                <div class="gradio-body">
+                                    <div class="input-group">
+                                        <label>GPU 数量</label>
+                                        <input type="range" class="gradio-slider" min="1" max="8" value="4" data-demo-slider="gpu">
+                                        <span class="slider-value" id="gradio-gpu-value">4</span>
+                                    </div>
+                                    <div class="input-group">
+                                        <label>使用时长 (小时)</label>
+                                        <input type="range" class="gradio-slider" min="1" max="24" value="8" data-demo-slider="hours">
+                                        <span class="slider-value" id="gradio-hours-value">8</span>
+                                    </div>
+                                    <div class="input-group">
+                                        <label>模型选择</label>
+                                        <select class="gradio-select" id="gradio-model">
+                                            <option value="gpt4">GPT-4</option>
+                                            <option value="claude">Claude 3.5</option>
+                                            <option value="gemini">Gemini 1.5</option>
+                                        </select>
+                                    </div>
+                                    <button class="gradio-button" id="gradio-calc">计算</button>
+                                    <div class="gradio-output" id="gradio-output" style="display:none;">
+                                        <div class="output-row">
+                                            <span>总价:</span><strong>$<span id="gradio-total">0</span></strong>
+                                        </div>
+                                        <div class="output-row">
+                                            <span>平均单价:</span><strong>$<span id="gradio-avg">0</span>/hr</strong>
+                                        </div>
+                                        <div class="output-row">
+                                            <span>风险等级:</span><span id="gradio-risk" class="risk-badge">低</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Streamlit Demo -->
+                        <div class="framework-demo" id="streamlit-demo">
+                            <div class="streamlit-ui">
+                                <div class="streamlit-sidebar">
+                                    <h4>⚙️ 配置</h4>
+                                    <div class="sidebar-group">
+                                        <label>GPU 数量: <span id="streamlit-gpu-value">4</span></label>
+                                        <input type="range" min="1" max="8" value="4" data-demo-slider="gpu">
+                                    </div>
+                                    <div class="sidebar-group">
+                                        <label>使用时长: <span id="streamlit-hours-value">8</span>小时</label>
+                                        <input type="range" min="1" max="24" value="8" data-demo-slider="hours">
+                                    </div>
+                                    <div class="sidebar-group">
+                                        <label>模型</label>
+                                        <select id="streamlit-model">
+                                            <option>GPT-4</option>
+                                            <option>Claude 3.5</option>
+                                            <option>Gemini 1.5</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="streamlit-main">
+                                    <h2>💰 AI 算力成本模拟器</h2>
+                                    <p class="streamlit-caption">实时计算您的 AI 训练成本</p>
+                                    <button class="streamlit-button" id="streamlit-calc">🚀 开始计算</button>
+                                    <div class="streamlit-metrics" id="streamlit-metrics" style="display:none;">
+                                        <div class="metric-card">
+                                            <label>总价</label>
+                                            <value id="streamlit-total">$0</value>
+                                        </div>
+                                        <div class="metric-card">
+                                            <label>平均单价</label>
+                                            <value id="streamlit-avg">$0/hr</value>
+                                        </div>
+                                        <div class="metric-card">
+                                            <label>风险等级</label>
+                                            <value id="streamlit-risk" class="risk-low">低</value>
+                                        </div>
+                                    </div>
+                                    <div class="streamlit-chart" id="streamlit-chart" style="display:none;">
+                                        <h4>📈 24小时成本预测</h4>
+                                        <canvas id="streamlitCanvas" width="400" height="150"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- React Demo -->
+                        <div class="framework-demo" id="react-demo">
+                            <div class="react-ui">
+                                <div class="react-header">
+                                    <div class="react-logo">⚛️</div>
+                                    <h3>AI Cost Simulator</h3>
+                                </div>
+                                <div class="react-body glass-panel">
+                                    <div class="react-controls">
+                                        <div class="control-group">
+                                            <label class="control-label">
+                                                <span>GPU 数量</span>
+                                                <span class="badge" id="react-gpu-value">4</span>
+                                            </label>
+                                            <input type="range" class="react-slider" min="1" max="8" value="4" data-demo-slider="gpu">
+                                            <div class="slider-track">
+                                                <div class="slider-fill" style="width: 50%"></div>
+                                            </div>
+                                        </div>
+                                        <div class="control-group">
+                                            <label class="control-label">
+                                                <span>使用时长</span>
+                                                <span class="badge" id="react-hours-value">8h</span>
+                                            </label>
+                                            <input type="range" class="react-slider" min="1" max="24" value="8" data-demo-slider="hours">
+                                            <div class="slider-track">
+                                                <div class="slider-fill" style="width: 33%"></div>
+                                            </div>
+                                        </div>
+                                        <div class="control-group">
+                                            <label class="control-label">模型选择</label>
+                                            <div class="model-chips" id="react-model">
+                                                <button class="chip active" data-model="gpt4">GPT-4</button>
+                                                <button class="chip" data-model="claude">Claude 3.5</button>
+                                                <button class="chip" data-model="gemini">Gemini</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button class="react-button primary" id="react-calc">
+                                        <span>Calculate</span>
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                                        </svg>
+                                    </button>
+                                    <div class="react-results" id="react-results" style="display:none;">
+                                        <div class="result-cards">
+                                            <div class="result-card">
+                                                <span class="result-label">Total Cost</span>
+                                                <span class="result-value" id="react-total">$0</span>
+                                            </div>
+                                            <div class="result-card">
+                                                <span class="result-label">Avg/Hour</span>
+                                                <span class="result-value" id="react-avg">$0</span>
+                                            </div>
+                                            <div class="result-card">
+                                                <span class="result-label">Risk</span>
+                                                <span class="result-value risk" id="react-risk">Low</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- NiceGUI Demo -->
+                        <div class="framework-demo" id="nicegui-demo">
+                            <div class="nicegui-ui">
+                                <div class="nicegui-toolbar">
+                                    <span class="material-icon">🎛️</span>
+                                    <span class="toolbar-title">NiceGUI Control Panel</span>
+                                </div>
+                                <div class="nicegui-content">
+                                    <div class="nicegui-card">
+                                        <div class="card-title">⚙️ 参数配置</div>
+                                        <div class="nicegui-control">
+                                            <label>GPU 数量: <span id="nicegui-gpu-value">4</span></label>
+                                            <input type="range" class="nicegui-slider" min="1" max="8" value="4" data-demo-slider="gpu">
+                                        </div>
+                                        <div class="nicegui-control">
+                                            <label>使用时长: <span id="nicegui-hours-value">8</span>小时</label>
+                                            <input type="range" class="nicegui-slider" min="1" max="24" value="8" data-demo-slider="hours">
+                                        </div>
+                                        <div class="nicegui-control">
+                                            <label>模型选择</label>
+                                            <select class="nicegui-select" id="nicegui-model">
+                                                <option value="gpt4">GPT-4</option>
+                                                <option value="claude">Claude 3.5</option>
+                                                <option value="gemini">Gemini 1.5</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <button class="nicegui-button" id="nicegui-calc">
+                                        <span class="btn-icon">▶</span>
+                                        开始计算
+                                    </button>
+                                    <div class="nicegui-output" id="nicegui-output" style="display:none;">
+                                        <div class="output-card">
+                                            <div class="output-header">
+                                                <span class="output-icon">📊</span>
+                                                <span>计算结果</span>
+                                            </div>
+                                            <div class="output-rows">
+                                                <div class="output-row">
+                                                    <span class="label">总价</span>
+                                                    <span class="value" id="nicegui-total">$0</span>
+                                                </div>
+                                                <div class="output-row">
+                                                    <span class="label">平均单价</span>
+                                                    <span class="value" id="nicegui-avg">$0/hr</span>
+                                                </div>
+                                                <div class="output-row">
+                                                    <span class="label">风险等级</span>
+                                                    <span class="value risk" id="nicegui-risk">低</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Framework Info Bar -->
+                    <div class="demo-info-bar">
+                        <div class="info-item">
+                            <span class="info-label">框架:</span>
+                            <span class="info-value" id="current-framework">Gradio</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">代码行数:</span>
+                            <span class="info-value" id="code-lines">~20 行</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">文件数:</span>
+                            <span class="info-value" id="file-count">1 个</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 10: Demo Summary -->
+        <div class="slide" data-slide="10">
+            <div class="slide-content">
+                <h2 class="section-title">代码量一目了然</h2>
+                <div class="file-structure-comparison">
+                    <div class="structure-column">
+                        <div class="structure-header streamlit-header">Streamlit</div>
+                        <div class="structure-tree">
+                            <div class="tree-item">
+                                <span class="folder">📁 Project</span>
+                                <div class="tree-children">
+                                    <span class="file">📄 app.py</span>
+                                    <span class="file-meta">20 行</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="structure-column">
+                        <div class="structure-header react-header">React</div>
+                        <div class="structure-tree">
+                            <div class="tree-item">
+                                <span class="folder">📁 Project</span>
+                                <div class="tree-children">
+                                    <span class="folder">📁 components/</span>
+                                    <span class="file indent">📄 ...</span>
+                                    <span class="file">📄 page.tsx</span>
+                                    <span class="file-meta">5 个文件</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="structure-column">
+                        <div class="structure-header django-header">Django</div>
+                        <div class="structure-tree">
+                            <div class="tree-item">
+                                <span class="folder">📁 Project</span>
+                                <div class="tree-children">
+                                    <span class="file">📄 models.py</span>
+                                    <span class="file">📄 views.py</span>
+                                    <span class="file">📄 urls.py</span>
+                                    <span class="file-meta">10+ 文件</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="chart-bar-container">
+                    <div class="bar-item">
+                        <span class="bar-label">Streamlit</span>
+                        <div class="bar-wrapper">
+                            <div class="bar" style="width: 10%; background: #FF4B4B;"></div>
+                        </div>
+                        <span class="bar-value">20行</span>
+                    </div>
+                    <div class="bar-item">
+                        <span class="bar-label">React</span>
+                        <div class="bar-wrapper">
+                            <div class="bar" style="width: 60%; background: #61DAFB;"></div>
+                        </div>
+                        <span class="bar-value">120行</span>
+                    </div>
+                    <div class="bar-item">
+                        <span class="bar-label">Django</span>
+                        <div class="bar-wrapper">
+                            <div class="bar" style="width: 100%; background: #092E20;"></div>
+                        </div>
+                        <span class="bar-value">200行+</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 11: Pros & Cons Quick View -->
+        <div class="slide" data-slide="11">
+            <div class="slide-content">
+                <h2 class="section-title">没有完美的框架</h2>
+                <div class="pros-cons-grid">
+                    <div class="pc-card">
+                        <div class="pc-header">
+                            <span class="pc-name">Gradio</span>
+                        </div>
+                        <div class="pc-body">
+                            <div class="pc-pro">✅ 极速响应</div>
+                            <div class="pc-con">❌ 样式死板</div>
+                        </div>
+                    </div>
+                    <div class="pc-card">
+                        <div class="pc-header">
+                            <span class="pc-name">Streamlit</span>
+                        </div>
+                        <div class="pc-body">
+                            <div class="pc-pro">✅ 零心理负担</div>
+                            <div class="pc-con">❌ 整页刷新</div>
+                        </div>
+                    </div>
+                    <div class="pc-card">
+                        <div class="pc-header">
+                            <span class="pc-name">NiceGUI</span>
+                        </div>
+                        <div class="pc-body">
+                            <div class="pc-pro">✅ 实时性强</div>
+                            <div class="pc-con">❌ 需 CSS 功底</div>
+                        </div>
+                    </div>
+                    <div class="pc-card">
+                        <div class="pc-header">
+                            <span class="pc-name">Reflex</span>
+                        </div>
+                        <div class="pc-body">
+                            <div class="pc-pro">✅ Python 全栈</div>
+                            <div class="pc-con">❌ 编译慢</div>
+                        </div>
+                    </div>
+                    <div class="pc-card">
+                        <div class="pc-header">
+                            <span class="pc-name">React</span>
+                        </div>
+                        <div class="pc-body">
+                            <div class="pc-pro">✅ 审美上限</div>
+                            <div class="pc-con">❌ 依赖复杂</div>
+                        </div>
+                    </div>
+                    <div class="pc-card">
+                        <div class="pc-header">
+                            <span class="pc-name">Django</span>
+                        </div>
+                        <div class="pc-body">
+                            <div class="pc-pro">✅ 稳如老狗</div>
+                            <div class="pc-con">❌ 文件分散</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 12: How to Choose -->
+        <div class="slide" data-slide="12">
+            <div class="slide-content">
+                <h2 class="section-title">场景决定选择</h2>
+                <div class="decision-flow">
+                    <div class="flow-row">
+                        <div class="scenario-card">
+                            <span class="scenario-icon">🧪</span>
+                            <p class="scenario-text">三分钟测 Prompt</p>
+                            <span class="scenario-arrow">→</span>
+                            <span class="scenario-result">Gradio</span>
+                        </div>
+                    </div>
+                    <div class="flow-row">
+                        <div class="scenario-card">
+                            <span class="scenario-icon">📊</span>
+                            <p class="scenario-text">展示算法结果</p>
+                            <span class="scenario-arrow">→</span>
+                            <span class="scenario-result">Streamlit</span>
+                        </div>
+                    </div>
+                    <div class="flow-row">
+                        <div class="scenario-card">
+                            <span class="scenario-icon">⚡</span>
+                            <p class="scenario-text">实时刷新监控</p>
+                            <span class="scenario-arrow">→</span>
+                            <span class="scenario-result">NiceGUI</span>
+                        </div>
+                    </div>
+                    <div class="flow-row">
+                        <div class="scenario-card">
+                            <span class="scenario-icon">🌐</span>
+                            <p class="scenario-text">Python 写网站</p>
+                            <span class="scenario-arrow">→</span>
+                            <span class="scenario-result">Reflex</span>
+                        </div>
+                    </div>
+                    <div class="flow-row">
+                        <div class="scenario-card">
+                            <span class="scenario-icon">🎨</span>
+                            <p class="scenario-text">极致美观产品</p>
+                            <span class="scenario-arrow">→</span>
+                            <span class="scenario-result">React</span>
+                        </div>
+                    </div>
+                    <div class="flow-row">
+                        <div class="scenario-card">
+                            <span class="scenario-icon">🏛️</span>
+                            <p class="scenario-text">百万级用户</p>
+                            <span class="scenario-arrow">→</span>
+                            <span class="scenario-result">Django</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 13: 2026 Selection Formula -->
+        <div class="slide" data-slide="13">
+            <div class="slide-content">
+                <h2 class="section-title">三条黄金路径</h2>
+                <div class="golden-paths">
+                    <div class="path-card-golden">
+                        <div class="path-icon-large">🏠</div>
+                        <h3>内部工具 / 算法展示</h3>
+                        <div class="path-tech">
+                            <span class="tech-badge python">Python</span>
+                            <span class="tech-badge">(Streamlit/NiceGUI)</span>
+                            <span class="tech-badge gemini">+ Gemini</span>
+                        </div>
+                        <p class="path-reason">理由：长上下文优势</p>
+                    </div>
+                    <div class="path-card-golden">
+                        <div class="path-icon-large">🎨</div>
+                        <h3>外部产品 / 极致 UI</h3>
+                        <div class="path-tech">
+                            <span class="tech-badge react">React</span>
+                            <span class="tech-badge">+ Claude Code</span>
+                        </div>
+                        <p class="path-reason">理由：审美优势</p>
+                    </div>
+                    <div class="path-card-golden">
+                        <div class="path-icon-large">🔒</div>
+                        <h3>复杂系统 / 安全第一</h3>
+                        <div class="path-tech">
+                            <span class="tech-badge django">Django</span>
+                            <span class="tech-badge">+ 人工审查</span>
+                        </div>
+                        <p class="path-reason">理由：稳健性第一</p>
+                    </div>
+                </div>
+                <p class="takeaway-quote">"没有最好的框架，只有最适合你场景的框架"</p>
+            </div>
+        </div>
+
+        <!-- Slide 14: Action Recommendations -->
+        <div class="slide" data-slide="14">
+            <div class="slide-content">
+                <h2 class="section-title">你的下一步</h2>
+                <div class="action-steps">
+                    <div class="action-step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h3>评估需求</h3>
+                            <ul>
+                                <li>原型还是产品？</li>
+                                <li>熟悉 Python 还是 JS？</li>
+                                <li>对 UI 美观度的要求？</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="action-step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h3>选择 AI 伙伴</h3>
+                            <ul>
+                                <li>单文件框架 → 任何 LLM</li>
+                                <li>React 生态 → Claude Code 最佳</li>
+                                <li>复杂架构 → 人工审查</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="action-step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h3>开始小步快跑</h3>
+                            <ul>
+                                <li>用选定框架做 30 分钟 Demo</li>
+                                <li>体验 AI 生成质量</li>
+                                <li>评估 Debug 效率</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="cta-button">现在就开始</div>
+            </div>
+        </div>
+
+        <!-- Slide 15: Summary & Q&A (Dark) -->
+        <div class="slide dark" data-slide="15">
+            <div class="slide-content">
+                <h2 class="section-title light large">谢谢</h2>
+                <div class="memory-points">
+                    <div class="memory-item">
+                        <span class="memory-icon">🏆</span>
+                        <div class="memory-text">
+                            <strong>Gradio/Streamlit</strong>
+                            <span>AI 的最佳拍档</span>
+                        </div>
+                    </div>
+                    <div class="memory-item">
+                        <span class="memory-icon">🎨</span>
+                        <div class="memory-text">
+                            <strong>React</strong>
+                            <span>AI 的母语</span>
+                        </div>
+                    </div>
+                    <div class="memory-item">
+                        <span class="memory-icon">🏛️</span>
+                        <div class="memory-text">
+                            <strong>Django</strong>
+                            <span>稳健首选</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="qa-section">
+                    <h3>Q&A</h3>
+                    <p class="contact-hint">欢迎交流讨论</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Navigation Controls -->
+    <div class="nav-controls">
+        <button class="nav-btn prev" id="prevBtn">←</button>
+        <button class="nav-btn next" id="nextBtn">→</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
